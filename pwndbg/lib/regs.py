@@ -472,6 +472,45 @@ mips = RegisterSet(
     retval="v0",
 )
 
+# [x.name for x in gdb.selected_frame().architecture().registers()]
+mips_octeon3 = RegisterSet(
+    frame="fp",
+    retaddr=("ra",),
+    gpr=(
+        "v0",
+        "v1",
+        "a0",
+        "a1",
+        "a2",
+        "a3",
+        "a4",
+        "a5",
+        "a6",
+        "a7",
+        "t0",
+        "t1",
+        "t2",
+        "t3",
+        "s0",
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5",
+        "s6",
+        "s7",
+        "t8",
+        "t9",
+        "k0",
+        "k1",
+        "gp",
+        "sp",
+        "s8",
+    ),
+    args=("a0", "a1", "a2", "a3", "a4", "a5", "a6", "a7"),
+    retval="v0",
+)
+
 # https://riscv.org/technical/specifications/
 # Volume 1, Unprivileged Spec v. 20191213
 # Chapter 25 - RISC-V Assembly Programmer’s Handbook
@@ -543,6 +582,7 @@ reg_sets = {
     "rv32": riscv,
     "rv64": riscv,
     "mips": mips,
+    "mips:octeon3": mips_octeon3,
     "sparc": sparc,
     "arm": arm,
     "armcm": armcm,
